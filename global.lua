@@ -31,13 +31,12 @@ function onLoad()
                 ipc = string.match(tag, "IPC_(%d+)")
             end
         end
-        if ipc ~= nil then
-            --Index Territory Marker
-            markerState[obj.getGUID()] = {state=obj.getStateId(), ipc=ipc}
-            --Update Tracker
-            if trackerState[obj.getStateId()] ~= nil then
-                trackerState[obj.getStateId()].pos = trackerState[obj.getStateId()].pos + ipc
-            end
+        if ipc == nil then ipc = 0 end
+        --Index Territory Marker
+        markerState[obj.getGUID()] = {state=obj.getStateId(), ipc=ipc, tags=tags}
+        --Update Tracker
+        if trackerState[obj.getStateId()] ~= nil then
+            trackerState[obj.getStateId()].pos = trackerState[obj.getStateId()].pos + ipc
         end
     end
     print("Done.")
@@ -61,12 +60,14 @@ function onObjectStateChange(object, old_state_guid)
         local oldState = store["state"]
         local newState = object.getStateId()
         local ipcValue = store["ipc"]
-        markerState[object.getGUID()] = {state=newState, ipc=ipcValue}
-        --fix tags
-        if not object.hasTag("CONTROL") then
-            object.addTag("CONTROl")
-            object.addTag("IPC_" ..ipcValue)
-        end
+        local oldTags = store["tags"]
+        markerState[object.getGUID()] = {state=newState, ipc=ipcValue, tags=oldTags}
+        --Transfer tags
+        object.setTags(oldTags)
+
+        --Check for VP Tag
+        --TODO
+
         --clean up
         markerState[old_state_guid] = nil
         adjustTracker(newState, ipcValue)
