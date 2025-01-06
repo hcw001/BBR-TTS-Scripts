@@ -42,19 +42,12 @@ function onLoad()
     print("Done.")
     --IPC Trackers
     print("Adjusting IPC trackers.")
-    unlockAllTrackers()
     positionTrackers()
-    lockAllTrackers()
     print("Done.")
 end
 
---[[ The onUpdate event is called once per frame. --]]
-function onUpdate()
-    --[[ print('onUpdate loop!') --]]
-end
-
 function onObjectStateChange(object, old_state_guid)
-    store = markerState[old_state_guid]
+    local store = markerState[old_state_guid]
     --update store
     if store ~= nil then
         local oldState = store["state"]
@@ -75,8 +68,10 @@ function onObjectStateChange(object, old_state_guid)
     end
 end
 
+-- IPC Tracker : Utility Functions
 function adjustTracker(state, shift)
-    tracker = trackerState[state] 
+    --Change value of IPC tracker
+    local tracker = trackerState[state] 
     if tracker ~= nil then
         tracker.pos = tracker.pos + shift
     end
@@ -84,6 +79,8 @@ function adjustTracker(state, shift)
 end
 
 function positionTrackers()
+    --Set XZ positions of IPC Trackers based on values
+    unlockAllTrackers()
     for key, value in pairs(trackerState) do
         --Position IPC Trackers
         local trackerObj = getObjectFromGUID(value.guid)
@@ -95,32 +92,17 @@ function positionTrackers()
             dx = -1
         end
         local trackerXYZ = {x=CORNER.x + dx*2.4, y=CORNER.y, z=CORNER.z - dz*2.4}
-        unlockAllTrackers()
         trackerObj.setPosition(trackerXYZ)
     end
+    lockAllTrackers()
     fixElevations()
     --Wait.time(function () lockAllTrackers() end, 1)
-    lockAllTrackers()
-end
-
--- utility functions
-function lockAllTrackers()
-    for key, value in pairs(trackerState) do
-        local tracker = getObjectFromGUID(value.guid)
-        tracker.setLock(true)
-    end
-end
-
-function unlockAllTrackers()
-    for key, value in pairs(trackerState) do
-        local tracker = getObjectFromGUID(value.guid)
-        tracker.setLock(false)
-    end
 end
 
 function fixElevations()
+    --Set Y positions of IPC Trackers
     unlockAllTrackers()
-    dy = 1
+    local dy = 1
     local positions = {}
     for key, value in pairs(trackerState) do
         --Handle 0 vs. 70
@@ -142,7 +124,21 @@ function fixElevations()
     lockAllTrackers()
 end
 
--- helper functions
+function lockAllTrackers()
+    for key, value in pairs(trackerState) do
+        local tracker = getObjectFromGUID(value.guid)
+        tracker.setLock(true)
+    end
+end
+
+function unlockAllTrackers()
+    for key, value in pairs(trackerState) do
+        local tracker = getObjectFromGUID(value.guid)
+        tracker.setLock(false)
+    end
+end
+
+-- helper functions : debug
 function printTableKeys(table)
     for key, value in pairs(table) do
         print(key.. " : " ..value)
@@ -151,6 +147,7 @@ end
 
 --array functions
 function getCountList(lst, target)
+    --Count instances of 'target' in 'lst'
     local count = 0
     for index, value in ipairs(lst) do
         if value == target then
