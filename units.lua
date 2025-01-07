@@ -136,20 +136,3 @@ UNITS= {
         [AAA]= {guid="b2c29a"}
     },
 }
-
--- [GERMANY]= {
---     [INF]= {guid=""},
---     [ART]= {guid=""},
---     [MECH]= {guid=""},
---     [TANK]= {guid=""},
---     [FTR]= {guid=""},
---     [TAC]= {guid=""},
---     [SBR]= {guid=""},
---     [TPT]= {guid=""},
---     [SUB]= {guid=""},
---     [DTR]= {guid=""},
---     [CSR]= {guid=""},
---     [BTS]= {guid=""},
---     [ACC]= {guid=""},
---     [AAA]= {guid=""}
--- }
