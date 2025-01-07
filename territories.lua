@@ -126,7 +126,7 @@ TERRITORY = {
     Urals= {guid="", nation=USSR, ipc=2, vp={"resources"}},
     Tunguska= {guid="", nation=USSR, ipc=1},
     --Central Russia
-    Kalusa= {guid="", nation=USSR, ipc=1},
+    Kaluga= {guid="", nation=USSR, ipc=1},
     Moscow= {guid="", nation=USSR, ipc=5, vp={"moscow"}},
     Tula= {guid="", nation=USSR, ipc=1},
     Samara= {guid="", nation=USSR, ipc=1},
