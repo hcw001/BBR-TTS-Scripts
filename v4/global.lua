@@ -1,15 +1,15 @@
 --[[ Lua code. See documentation: https://api.tabletopsimulator.com/ --]]
 markerState = {}
 trackerState = {
-    [1] = {guid="64f090", pos= 0}, --Germany
-    [2] = {guid="27f5b3", pos= 0}, --Japan
-    [3] = {guid="e7c5d9", pos= 0}, --USA
-    [4] = {guid="9df847", pos= 0}, --UK,
-    [5] = {guid="fba6da", pos= 0}, --China
-    [6] = {guid="9720b1", pos= 0}, --Italy
-    [7] = {guid="46a832", pos= 0}, --CW
-    [8] = {guid="4b2f45", pos= 0}, --France
-    [9] = {guid="95986a", pos= 0} --USSR
+    [1] = {guid="879f12", pos= 0}, --Germany
+    [2] = {guid="a650e7", pos= 0}, --Japan
+    [3] = {guid="7d1a31", pos= 0}, --USA
+    [4] = {guid="0860ce", pos= 0}, --UK,
+    [5] = {guid="f5da98", pos= 0}, --China
+    [6] = {guid="61a255", pos= 0}, --Italy
+    [7] = {guid="85ffca", pos= 0}, --CW
+    [8] = {guid="7ae5a3", pos= 0}, --France
+    [9] = {guid="955dbe", pos= 0} --USSR
 }
 
 CORNER = {x=-17.24, y=2.50, z=-118.69}
