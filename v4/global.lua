@@ -13,6 +13,7 @@ trackerState = {
 }
 
 CORNER = {x=-17.24, y=2.50, z=-118.69}
+BOX_SIZE = 2.36
 
 --[[ The onLoad event is called after the game save finishes loading. --]]
 function onLoad()
@@ -87,7 +88,7 @@ function positionTrackers()
             dz = 0
             dx = -1
         end
-        local trackerXYZ = {x=CORNER.x + dx*2.4, y=CORNER.y, z=CORNER.z - dz*2.4}
+        local trackerXYZ = {x=CORNER.x + dx*BOX_SIZE, y=CORNER.y, z=CORNER.z - dz*BOX_SIZE}
         trackerObj.setPosition(trackerXYZ)
     end
     lockAllTrackers()
