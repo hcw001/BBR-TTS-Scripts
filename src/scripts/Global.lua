@@ -1,6 +1,5 @@
-require("src/Positions")
-require("src/Units")
-require("src/config")
+require("./src/Positions")
+require("./src/Units")
 
 function onLoad()
     print("Loaded")
@@ -15,7 +14,7 @@ function onChat(message, sender)
 end
 
 function setup_units()
-    local bag = getObjectFromGUID(UNITS[GERMANY][INF])
+    local bag = getObjectFromGUID(UNITS[GERMANY][INF].guid)
     local position = POSITION.Greenland
     bag.takeObject({
         position = position,

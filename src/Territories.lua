@@ -1,3 +1,4 @@
+require('./src/Config')
 TERRITORY = {
     --Atlantic: North America
     Greenland= {guid="", nation=US, ipc=1},

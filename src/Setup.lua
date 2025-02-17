@@ -1,3 +1,4 @@
+require('./src/Config')
 --NATION / UNIT / COUNT
 SETUP_UNITS_LAND= {
     --Atlantic: North America
