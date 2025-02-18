@@ -1,4 +1,4 @@
-require('./src/Config')
+require('./src/Assets/Config')
 UNITS= {
     [GERMANY]= {
         [INF]= {guid="6f9e3f"},

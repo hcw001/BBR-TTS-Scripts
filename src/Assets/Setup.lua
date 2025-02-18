@@ -1,4 +1,4 @@
-require('./src/Config')
+require('./src/Assets/Config')
 --NATION / UNIT / COUNT
 SETUP_UNITS_LAND= {
     --Atlantic: North America
@@ -18,7 +18,7 @@ SETUP_UNITS_LAND= {
     Vichy= {{FRANCE, INF, 2}, {FRANCE, ART, 1}},
     France= {{FRANCE, INF, 6}, {FRANCE, ART, 1}, {UK, ART, 1}, {FRANCE, TANK, 1}, {UK, TANK, 1}, {FRANCE, FTR, 1}, {FRANCE, AAA, 1}},
     --Central Europe
-    Germany= {{GERMANY, INF, 11}, {GERMANY, ART, 2}, {GERMANY, TAC, 1}. {GERMANY, SBR, 2}, {GERMANY, AAA, 3}},
+    Germany= {{GERMANY, INF, 11}, {GERMANY, ART, 2}, {GERMANY, TAC, 1}, {GERMANY, SBR, 2}, {GERMANY, AAA, 3}},
     Poland= {{GERMANY, INF, 2}, {GERMANY, MECH, 2}, {GERMANY, TANK, 1}, {GERMANY, TAC, 1}},
     SoutherGermany= {{GERMANY, INF, 6}, {GERMANY, ART, 2}, {GERMANY, MECH, 2}, {GERMANY, TANK, 3}},
     SlovakiaHungary= {{GERMANY, INF, 1}, {GERMANY, MECH, 2}, {GERMANY, TANK, 1}, {GERMANY, FTR, 1}},

@@ -1,38 +1,28 @@
-require("./src/Positions")
-require("./src/Units")
+require("./src/scripts/TerritorySetup")
+require("./src/scripts/TrackerManagement")
+require("./src/scripts/UnitSetup")
 
 function onLoad()
     print("Loaded")
+    CONTROL_MARKER_OBJ = getObjectFromGUID("8193c4")
+    SETUP_DONE = false
+end
+
+function onObjectStateChange(object, old_state_guid)
+    if SETUP_DONE then
+        handle_tracker_state_change(object, old_state_guid) 
+    end
 end
 
 function onChat(message, sender)
     if message == 'setup' then
         print("Initializing...")
-        Global.call("setup_units") --setup_units()
+        SETUP_DONE = false
+        setup_zones()
+        setup_territories(CONTROL_MARKER_OBJ)
+        Wait.time(function () setup_trackers() end, 1.5)
+        setup_units()
+        SETUP_DONE = true
         print("Setup Complete.")
     end
 end
-
-function setup_units()
-    local bag = getObjectFromGUID(UNITS[GERMANY][INF].guid)
-    local position = POSITION.Greenland
-    local takenObj = bag.takeObject({
-        position = position,
-        callback_function = function(taken_object)
-            print("Place Infantry.")
-        end
-    })
-    -- takenObj.highlightOn('Blue')
-end
-
--- function staggeredLoad(objects, index)
---     index = index or 1
---     if index > #objects then return end
-    
---     local obj = objects[index]
---     obj.setPositionSmooth({0,5,0})
-    
---     Wait.time(function()
---         staggeredLoad(objects, index+1)
---     end, 0.2)
--- end
