@@ -1,6 +1,7 @@
 require("./src/scripts/TerritorySetup")
 require("./src/scripts/TrackerManagement")
 require("./src/scripts/UnitSetup")
+require("./src/scripts/ZoneLayout")
 
 function onLoad()
     print("Loaded")
@@ -12,6 +13,10 @@ function onObjectStateChange(object, old_state_guid)
     if SETUP_DONE then
         handle_tracker_state_change(object, old_state_guid) 
     end
+end
+
+function onObjectEnterZone(zone, object)
+    handle_zone_layout(zone, object)
 end
 
 function onChat(message, sender)
