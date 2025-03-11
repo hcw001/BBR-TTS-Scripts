@@ -8,9 +8,10 @@ function setup_zones()
         local zone = spawnObject({
             type="ScriptingTrigger",
             position=position,
-            scale={2,2,2} 
+            scale={4,2,4}  -- Doubled width and length while keeping height
         })
         zone.addTag("UNIT")
+        zone.addTag("TERRITORY_" .. name)  -- Add territory name tag for identification
         TERRITORY[name].guid = zone.guid
     end
 end
