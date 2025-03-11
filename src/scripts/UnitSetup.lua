@@ -17,6 +17,7 @@ function setup_units()
                 unitObj.addTag("NATION_" ..nation)
                 unitObj.addTag("UNIT")
                 unitObj.addTag("UNIT_" ..unitType)
+                unitObj.setLock(true)
             end
         end
     end
